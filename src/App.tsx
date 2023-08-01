@@ -8,20 +8,20 @@ import {
 } from "react-router-dom";
 import * as React from "react";
 import { ChakraProvider, theme } from "@chakra-ui/react";
-const Hero = React.lazy(() => import("./components/hero"));
-const Navbar = React.lazy(() => import("./components/navbar"));
-const Footer = React.lazy(() => import("./components/footer"));
-const Milestones = React.lazy(() => import("./components/timeline"));
-const Contact = React.lazy(() => import("./components/contact"));
-const Blog = React.lazy(() => import("./components/Blog"));
-const SinglePost = React.lazy(() => import("./components/SinglePost"));
-const Stats = React.lazy(() => import("./components/stats"));
-const TechStack = React.lazy(() => import("./components/techStack"));
-const Photography = React.lazy(() => import("./components/Photography"));
-const SingleGallery = React.lazy(() => import("./components/SingleGallery"));
-const GithubData = React.lazy(() => import("./components/GithubData"));
-import netlifyIdentity from "netlify-identity-widget";
+import Hero from "./components/hero";
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
+import Milestones from "./components/timeline";
+import Contact from "./components/contact";
+import Blog from "./components/Blog";
+import SinglePost from "./components/SinglePost";
+import Stats from "./components/stats";
+import TechStack from "./components/techStack";
+import Photography from "./components/Photography";
+import SingleGallery from "./components/SingleGallery";
 import ReactGA from "react-ga4";
+import GithubData from "./components/GithubData";
+import netlifyIdentity from "netlify-identity-widget";
 
 // Initialize Google Analytics
 ReactGA.initialize([

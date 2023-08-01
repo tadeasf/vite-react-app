@@ -32,7 +32,11 @@ ReactGA.initialize([
 
 netlifyIdentity.init();
 
-const MainRoutes = () => {
+interface MainRoutesProps {
+  route: string;
+}
+
+const MainRoutes: React.FC<MainRoutesProps> = ({ route }) => {
   const location = useLocation();
 
   React.useEffect(() => {
@@ -40,6 +44,27 @@ const MainRoutes = () => {
     ReactGA.send({ hitType: "pageview", page: location.pathname });
   }, [location]);
 
+  // Server-side rendering
+  if (route) {
+    switch (route) {
+      case "/contact":
+        return <Contact />;
+      case "/blog":
+        return <Blog />;
+      // Add all your routes here
+      default:
+        return (
+          <>
+            <Hero />
+            <TechStack />
+            <Stats />
+            <Milestones />
+          </>
+        );
+    }
+  }
+
+  // Client-side routing
   return (
     <Routes>
       <Route path="/contact" element={<Contact />} />
@@ -63,11 +88,15 @@ const MainRoutes = () => {
   );
 };
 
-export const App = () => (
+interface AppProps {
+  route: string;
+}
+
+export const App: React.FC<AppProps> = ({ route }) => (
   <ChakraProvider theme={theme}>
     <Router>
       <Navbar />
-      <MainRoutes />
+      <MainRoutes route={route} />
       <Footer />
     </Router>
   </ChakraProvider>
